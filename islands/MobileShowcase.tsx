@@ -93,18 +93,19 @@ export default function MobileShowcase() {
             {/* Photo card */}
             <div class="relative">
               <div class="card-hover bg-[#111113] border border-zinc-900 rounded-lg p-1 overflow-hidden">
-                <div class="relative aspect-[4/5] bg-gradient-to-br from-zinc-800 via-zinc-900 to-black rounded overflow-hidden">
-                  {/* Placeholder for photo */}
+                <div class="relative aspect-[4/5] bg-gradient-to-br from-zinc-900 via-black to-zinc-900 rounded overflow-hidden">
+                  {/* Photo — works great with Memoji (transparent bg) */}
                   <img
                     src="/profile.jpg"
                     alt="Heriberto Valencia"
-                    class="w-full h-full object-cover opacity-80"
+                    class="w-full h-full object-contain relative z-10 drop-shadow-[0_0_20px_rgba(74,222,128,0.3)]"
                     onError={(e) => {
                       (e.target as HTMLImageElement).style.display = "none";
                     }}
                   />
-                  {/* Fallback decorative content */}
-                  <div class="absolute inset-0 flex items-center justify-center">
+
+                  {/* Fallback when no image */}
+                  <div class="absolute inset-0 flex items-center justify-center -z-0">
                     <div class="text-center">
                       <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-emerald-500 to-amber-500 flex items-center justify-center font-display text-4xl font-bold text-black">
                         HV
@@ -115,18 +116,25 @@ export default function MobileShowcase() {
                     </div>
                   </div>
 
-                  {/* Overlay grid */}
-                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                  {/* Subtle vignette */}
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/40 pointer-events-none"></div>
 
-                  {/* Corner brackets */}
-                  <div class="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-emerald-500"></div>
-                  <div class="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-emerald-500"></div>
-                  <div class="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-emerald-500"></div>
-                  <div class="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-emerald-500"></div>
+                  {/* Corner brackets — viewfinder */}
+                  <div class="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-emerald-500 z-20"></div>
+                  <div class="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-emerald-500 z-20"></div>
+                  <div class="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-emerald-500 z-20"></div>
+                  <div class="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-emerald-500 z-20"></div>
 
                   {/* Status bar */}
-                  <div class="absolute top-3 left-1/2 -translate-x-1/2 font-mono text-[10px] text-emerald-400 bg-black/60 px-2 py-0.5 rounded">
-                    REC ● 4K
+                  <div class="absolute top-3 left-1/2 -translate-x-1/2 font-mono text-[10px] text-emerald-400 bg-black/70 px-2 py-0.5 rounded z-20">
+                    REC ● 4K · MEMOJI
+                  </div>
+
+                  {/* Bottom data strip */}
+                  <div class="absolute bottom-3 left-3 right-3 flex justify-between font-mono text-[9px] text-zinc-400 z-20">
+                    <span class="bg-black/60 px-1.5 py-0.5 rounded">ISO 100</span>
+                    <span class="bg-black/60 px-1.5 py-0.5 rounded">f/1.8</span>
+                    <span class="bg-black/60 px-1.5 py-0.5 rounded">1/60s</span>
                   </div>
                 </div>
               </div>
