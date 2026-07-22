@@ -1,6 +1,7 @@
 import { Head } from "fresh/runtime";
 import { define } from "../utils.ts";
 import Hero from "../islands/Hero.tsx";
+import MobileShowcase from "../islands/MobileShowcase.tsx";
 import Skills from "../islands/Skills.tsx";
 import Experience from "../islands/Experience.tsx";
 import Projects from "../islands/Projects.tsx";
@@ -18,6 +19,7 @@ export default define.page(function Home() {
       </Head>
 
       <Hero />
+      <MobileShowcase />
       <Skills />
       <Experience />
       <Projects />

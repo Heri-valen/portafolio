@@ -48,7 +48,9 @@
     ]
   },
   "deploy": {
-    "org": "heri-valen"
+    "org": "heri-valen",
+    "app": "portafolio"
   }
 }
+
 

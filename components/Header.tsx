@@ -4,62 +4,89 @@ export default function Header() {
   const isMenuOpen = useSignal(false);
 
   const navItems = [
-    { href: "/#skills", label: "Skills" },
-    { href: "/#experience", label: "Experience" },
-    { href: "/#projects", label: "Projects" },
-    { href: "/#contact", label: "Contact" },
+    { href: "#showcase", label: "/mobile" },
+    { href: "#skills", label: "/skills" },
+    { href: "#experience", label: "/experience" },
+    { href: "#projects", label: "/projects" },
+    { href: "#contact", label: "/contact" },
   ];
 
   return (
-    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-slate-800">
-      <nav class="container mx-auto px-4 py-4">
-        <div class="flex items-center justify-between">
-          <a href="/" class="text-xl font-bold text-white">
-            <span class="text-blue-500">&lt;</span>Dev<span class="text-blue-500">/&gt;</span>
+    <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[#0a0a0b]/80 border-b border-zinc-900">
+      <nav class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-14">
+          {/* Logo / Prompt */}
+          <a href="#top" class="flex items-center gap-2 font-mono text-sm group">
+            <span class="text-emerald-500">~</span>
+            <span class="text-zinc-400 group-hover:text-white transition-colors">
+              heriberto<span class="text-emerald-500">@dev</span>
+            </span>
+            <span class="hidden md:inline text-zinc-600">:</span>
+            <span class="hidden md:inline text-amber">~/portfolio</span>
+            <span class="hidden md:inline text-emerald-500">$</span>
           </a>
 
-          <ul class="hidden md:flex items-center gap-8">
+          {/* Center nav */}
+          <ul class="hidden md:flex items-center gap-1 font-mono text-xs">
             {navItems.map((item) => (
               <li key={item.href}>
                 <a
                   href={item.href}
-                  class="text-slate-300 hover:text-white transition-colors relative group"
+                  class="px-3 py-2 text-zinc-500 hover:text-emerald-400 transition-colors"
                 >
                   {item.label}
-                  <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full"></span>
                 </a>
               </li>
             ))}
           </ul>
 
-          <div class="hidden md:flex items-center gap-4">
-            <a href="https://github.com" target="_blank" rel="noopener" class="text-slate-400 hover:text-white transition-colors">
-              GitHub
+          {/* Status indicators */}
+          <div class="hidden md:flex items-center gap-4 font-mono text-xs">
+            <div class="flex items-center gap-2">
+              <span class="status-dot"></span>
+              <span class="text-zinc-500">online</span>
+            </div>
+            <div class="text-zinc-700">|</div>
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener"
+              class="text-zinc-500 hover:text-amber transition-colors"
+            >
+              [gh]
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener" class="text-slate-400 hover:text-white transition-colors">
-              LinkedIn
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener"
+              class="text-zinc-500 hover:text-amber transition-colors"
+            >
+              [in]
             </a>
           </div>
 
+          {/* Mobile toggle */}
           <button
-            class="md:hidden text-white"
+            class="md:hidden font-mono text-emerald-500 px-3"
             onClick={() => isMenuOpen.value = !isMenuOpen.value}
           >
-            {isMenuOpen.value ? "✕" : "☰"}
+            {isMenuOpen.value ? "[x]" : "[≡]"}
           </button>
         </div>
 
+        {/* Mobile menu */}
         {isMenuOpen.value && (
-          <div class="md:hidden pt-4 pb-2">
-            <ul class="flex flex-col gap-4">
+          <div class="md:hidden pb-4 border-t border-zinc-900 mt-2 pt-4">
+            <ul class="flex flex-col gap-1 font-mono text-sm">
               {navItems.map((item) => (
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    class="text-slate-300 hover:text-white transition-colors block"
+                    class="block px-3 py-2 text-zinc-400 hover:text-emerald-400 hover:bg-zinc-900/50 rounded transition-colors"
                     onClick={() => isMenuOpen.value = false}
                   >
-                    {item.label}
+                    <span class="text-emerald-500">$ </span>
+                    cd {item.label}
                   </a>
                 </li>
               ))}
