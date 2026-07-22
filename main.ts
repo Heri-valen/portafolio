@@ -1,6 +1,8 @@
-import { App } from "fresh";
-import manifest from "./fresh.gen.ts";
-import config from "./fresh.config.ts";
+import { App, staticFiles } from "fresh";
+import { Builder } from "fresh/dev";
 
-const app = new App(manifest, config);
-app.listen();
+const builder = new Builder({});
+
+await builder.listen(() =>
+  import("./app.ts") as Promise<{ app: App }>
+);
