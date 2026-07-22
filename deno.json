@@ -46,5 +46,9 @@
       "noscript",
       "template"
     ]
+  },
+  "deploy": {
+    "org": "heri-valen"
   }
 }
+

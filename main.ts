@@ -17,3 +17,4 @@ const exampleLoggerMiddleware = define.middleware((ctx) => {
 app.use(exampleLoggerMiddleware);
 
 app.fsRoutes();
+
