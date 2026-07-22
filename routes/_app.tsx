@@ -1,15 +1,14 @@
-import { type PageProps } from "fresh";
+import { define } from "../utils.ts";
 import Header from "../components/Header.tsx";
 import Footer from "../components/Footer.tsx";
 
-export default function App({ Component }: PageProps) {
+export default define.page(function App({ Component }) {
   return (
     <html lang="en">
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#0f172a" />
-        <link rel="stylesheet" href="/styles.css" />
       </head>
       <body class="bg-slate-50 text-slate-900 antialiased">
         <div class="min-h-screen flex flex-col">
@@ -22,4 +21,4 @@ export default function App({ Component }: PageProps) {
       </body>
     </html>
   );
-}
+});

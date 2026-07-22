@@ -1,8 +1,19 @@
 import { App, staticFiles } from "fresh";
-import { Builder } from "fresh/dev";
+import { define, type State } from "./utils.ts";
 
-const builder = new Builder({});
+export const app = new App<State>();
 
-await builder.listen(() =>
-  import("./app.ts") as Promise<{ app: App }>
-);
+app.use(staticFiles());
+
+app.use(async (ctx) => {
+  ctx.state.shared = "hello";
+  return await ctx.next();
+});
+
+const exampleLoggerMiddleware = define.middleware((ctx) => {
+  console.log(`${ctx.req.method} ${ctx.req.url}`);
+  return ctx.next();
+});
+app.use(exampleLoggerMiddleware);
+
+app.fsRoutes();
