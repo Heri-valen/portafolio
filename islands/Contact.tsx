@@ -81,7 +81,7 @@ export default function Contact() {
               <div class="border border-zinc-900 rounded-lg p-4 bg-[#0a0a0b]">
                 <div class="text-xs text-zinc-600 mb-2">{d.contact.jsonLabel}</div>
                 <div class="flex flex-wrap items-center gap-3">
-                  <span class="text-emerald-500">email:</span>
+                  <span class="text-emerald-500">{d.contact.emailKey}</span>
                   <a
                     href={`mailto:${email}`}
                     class="text-white hover:text-emerald-400 transition-colors"

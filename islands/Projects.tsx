@@ -433,7 +433,7 @@ export default function Projects() {
                           key={s.label}
                           class="metric-pill font-mono text-[10px] px-2 py-1 border border-zinc-800 rounded text-zinc-500 flex items-center gap-1.5"
                         >
-                          <span class="text-zinc-700">{s.label}:</span>
+                          <span class="text-zinc-700">{d.projects.metrics[s.label] ?? s.label}:</span>
                           <span
                             class="font-bold"
                             style={`color: ${meta.color};`}

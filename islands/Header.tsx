@@ -76,7 +76,7 @@ export default function Header() {
             <button
               class="font-mono text-emerald-500 px-3"
               onClick={() => isMenuOpen.value = !isMenuOpen.value}
-              aria-label="Toggle menu"
+              aria-label={d.nav.toggleMenu}
             >
               {isMenuOpen.value ? "[x]" : "[≡]"}
             </button>

@@ -300,9 +300,9 @@ export default function MobileShowcase() {
                   </div>
                   {/* Product cards */}
                   {[
-                    { c: "from-emerald-500/30", n: "Item #1" },
-                    { c: "from-amber-500/30", n: "Item #2" },
-                    { c: "from-violet-500/30", n: "Item #3" },
+                    { c: "from-emerald-500/30", n: `${d.showcase.item} #1` },
+                    { c: "from-amber-500/30", n: `${d.showcase.item} #2` },
+                    { c: "from-violet-500/30", n: `${d.showcase.item} #3` },
                   ].map((p, i) => (
                     <div
                       key={i}

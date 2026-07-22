@@ -296,7 +296,7 @@ export default function AISection() {
         {/* Stack marquee */}
         <div class="mt-8 font-mono text-xs text-zinc-500 text-center">
           <span class="text-emerald-500">$ </span>
-          <span class="opacity-60">stack</span> = <span class="text-zinc-300">{d.ai.stack}</span>
+          <span class="opacity-60">{d.ai.stackLabel}</span> = <span class="text-zinc-300">{d.ai.stack}</span>
         </div>
       </div>
     </section>

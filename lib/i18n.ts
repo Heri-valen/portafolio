@@ -26,6 +26,7 @@ export type Dict = {
     experience: string;
     projects: string;
     contact: string;
+    toggleMenu: string;
   };
   status: string;
   hero: {
@@ -62,6 +63,7 @@ export type Dict = {
     thisMonth: string;
     transaction: string;
     seniorEng: string;
+    item: string;
     banking: { balance: string; card: string; send: string; pay: string; top: string };
     shop: { featured: string };
     activity: { steps: string; heart: string; cal: string };
@@ -101,6 +103,7 @@ export type Dict = {
       stepPrefix: string;
     };
     stack: string;
+    stackLabel: string;
     streaming: string;
     live: string;
     streamBlock: string;
@@ -142,6 +145,7 @@ export type Dict = {
     check: string;
     on: string;
     specimenLabel: string;
+    metrics: Record<string, string>;
   };
   contact: {
     marker: string;
@@ -152,6 +156,7 @@ export type Dict = {
     based: string;
     city: string;
     email: string;
+    emailKey: string;
     copy: string;
     copied: string;
     jsonLabel: string;
@@ -172,6 +177,7 @@ const en: Dict = {
     experience: "/experience",
     projects: "/projects",
     contact: "/contact",
+    toggleMenu: "Toggle menu",
   },
   status: "online",
   hero: {
@@ -213,6 +219,7 @@ const en: Dict = {
     thisMonth: "▲ +12.4% this month",
     transaction: "Transaction",
     seniorEng: "Senior Engineer",
+    item: "Item",
     banking: {
       balance: "BALANCE",
       card: "•••• 4242",
@@ -311,6 +318,7 @@ const en: Dict = {
     streamExecute: "→ execute: SELECT * FROM users → /tmp/export.csv",
     streamReflect: "→ reflect: schema validated · 1,247 rows · 312KB",
     streamRespond: "→ respond: file written · ready for download",
+    stackLabel: "stack",
   },
   experience: {
     marker: "02 // Career",
@@ -343,16 +351,41 @@ const en: Dict = {
     check: "check",
     on: "on",
     specimenLabel: "SPECIMEN",
+    metrics: {
+      skus: "skus",
+      uptime: "uptime",
+      checkout_ms: "checkout_ms",
+      sites: "sites",
+      plugins: "plugins",
+      themes: "themes",
+      tenants: "tenants",
+      jobs_per_day: "jobs/day",
+      p99_ms: "p99_ms",
+      endpoints: "endpoints",
+      requests_per_s: "req/s",
+      docs: "docs",
+      platforms: "platforms",
+      biometric: "biometric",
+      rating: "rating",
+      sync: "sync",
+      models: "models",
+      tickets_per_mo: "tickets/mo",
+      tools: "tools",
+      autonomy: "autonomy",
+      ocr_acc: "ocr_acc",
+      queue: "queue",
+    },
   },
   contact: {
     marker: "06 // Contact",
     titleA: "Get in",
     titleB: "touch",
     cmd: "$ contact --new --channel=preferred",
-    online: "online",
+online: "online",
     based: "Based in",
     city: "Bogotá, Colombia",
     email: "hello@example.com",
+    emailKey: "email:",
     copy: "copy",
     copied: "copied ✓",
     jsonLabel: "$ cat contact.json",
@@ -373,6 +406,7 @@ const es: Dict = {
     experience: "/experiencia",
     projects: "/proyectos",
     contact: "/contacto",
+    toggleMenu: "Alternar menú",
   },
   status: "en línea",
   hero: {
@@ -414,6 +448,7 @@ const es: Dict = {
     thisMonth: "▲ +12.4% este mes",
     transaction: "Transacción",
     seniorEng: "Ingeniero Senior",
+    item: "Artículo",
     banking: {
       balance: "SALDO",
       card: "•••• 4242",
@@ -512,6 +547,7 @@ const es: Dict = {
     streamExecute: "→ ejecutar: SELECT * FROM usuarios → /tmp/exportar.csv",
     streamReflect: "→ reflexionar: esquema validado · 1,247 filas · 312KB",
     streamRespond: "→ responder: archivo escrito · listo para descargar",
+    stackLabel: "stack",
   },
   experience: {
     marker: "02 // Carrera",
@@ -544,6 +580,30 @@ const es: Dict = {
     check: "revisa",
     on: "en",
     specimenLabel: "ESPECÍMEN",
+    metrics: {
+      skus: "skus",
+      uptime: "disponib.",
+      checkout_ms: "checkout_ms",
+      sites: "sitios",
+      plugins: "plugins",
+      themes: "themes",
+      tenants: "inquilinos",
+      jobs_per_day: "trabajos/día",
+      p99_ms: "p99_ms",
+      endpoints: "endpoints",
+      requests_per_s: "req/s",
+      docs: "docs",
+      platforms: "plataformas",
+      biometric: "biométric.",
+      rating: "calif.",
+      sync: "sincron.",
+      models: "modelos",
+      tickets_per_mo: "tickets/mes",
+      tools: "herram.",
+      autonomy: "autonomía",
+      ocr_acc: "precisión",
+      queue: "cola",
+    },
   },
   contact: {
     marker: "06 // Contacto",
@@ -554,6 +614,7 @@ const es: Dict = {
     based: "Ubicado en",
     city: "Bogotá, Colombia",
     email: "hola@ejemplo.com",
+    emailKey: "correo:",
     copy: "copiar",
     copied: "copiado ✓",
     jsonLabel: "$ cat contacto.json",
