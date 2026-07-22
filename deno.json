@@ -8,7 +8,12 @@
   },
   "exclude": ["**/_fresh/*"],
   "imports": {
-    "$fresh/": "jsr:@fresh/core@2.3.3/",
+    "$fresh/server": "jsr:@fresh/core@2.3.3/server",
+    "$fresh/client": "jsr:@fresh/core@2.3.3/client",
+    "$fresh/runtime": "jsr:@fresh/core@2.3.3/runtime",
+    "$fresh/server.ts": "jsr:@fresh/core@2.3.3/server",
+    "$fresh/client.ts": "jsr:@fresh/core@2.3.3/client",
+    "$fresh/runtime.ts": "jsr:@fresh/core@2.3.3/runtime",
     "preact": "npm:preact@10.25.4",
     "@preact/signals": "npm:@preact/signals@2.9.4",
     "$std/": "jsr:@std@0.224.0/",
