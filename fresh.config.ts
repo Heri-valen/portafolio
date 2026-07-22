@@ -1,3 +1,3 @@
-import { defineConfig } from "@fresh/core/server";
+import { defineConfig } from "$fresh/server.ts";
 
 export default defineConfig({});
