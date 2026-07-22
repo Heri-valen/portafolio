@@ -1,9 +1,11 @@
-import { useEffect } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import anime from "animejs";
 import { t } from "../lib/i18n.ts";
+import ProfileModal from "./ProfileModal.tsx";
 
 export default function Hero() {
   const d = t();
+  const [profileOpen, setProfileOpen] = useState(false);
 
   useEffect(() => {
     const tl = anime.timeline({ easing: "easeOutExpo" });
@@ -50,6 +52,17 @@ export default function Hero() {
     "TYPESCRIPT", "PYTHON", "VUEJS", "SVELTE", "ANGULAR",
     "KOTLIN", "SWIFT", "PHP", "C#", "JAVA", "AWS", "DOCKER",
   ];
+
+  function openProfile() {
+    // Subtle button click animation
+    anime({
+      targets: ".btn-profile",
+      scale: [1, 0.94, 1],
+      duration: 280,
+      easing: "easeOutQuad",
+    });
+    setTimeout(() => setProfileOpen(true), 120);
+  }
 
   return (
     <section id="top" class="scanlines relative min-h-screen flex flex-col items-center justify-center grid-bg overflow-hidden noise">
@@ -107,6 +120,14 @@ export default function Hero() {
             <span>{d.hero.viewWork}</span>
             <span class="text-xs">→</span>
           </a>
+          <button
+            type="button"
+            onClick={openProfile}
+            class="btn-profile btn-ghost group relative"
+          >
+            <span>{d.hero.initProfile}</span>
+            <span class="text-xs text-amber group-hover:rotate-12 transition-transform">★</span>
+          </button>
           <a href="#contact" class="btn-ghost">
             <span>{d.hero.initContact}</span>
           </a>
@@ -123,6 +144,8 @@ export default function Hero() {
           ))}
         </div>
       </div>
+
+      <ProfileModal open={profileOpen} onClose={() => setProfileOpen(false)} />
     </section>
   );
 }

@@ -29,7 +29,7 @@ export type Dict = {
     toggleMenu: string;
   };
   status: string;
-  hero: {
+hero: {
     tag: string;
     name: string;
     role: string;
@@ -37,6 +37,7 @@ export type Dict = {
     location: string;
     viewWork: string;
     initContact: string;
+    initProfile: string;
     terminalPath: string;
   };
   showcase: {
@@ -188,6 +189,7 @@ const en: Dict = {
     location: "Bogotá, Colombia",
     viewWork: "view_work",
     initContact: "init_contact",
+    initProfile: "open_profile",
     terminalPath: "~/portafolio/heriberto.valencia",
   },
   showcase: {
@@ -417,6 +419,7 @@ const es: Dict = {
     location: "Bogotá, Colombia",
     viewWork: "ver_trabajo",
     initContact: "iniciar_contacto",
+    initProfile: "abrir_perfil",
     terminalPath: "~/portafolio/heriberto.valencia",
   },
   showcase: {
