@@ -1,6 +1,6 @@
-/// <reference types "$fresh/src/server/client.ts" />
+/// <reference types "@fresh/core/server" />
 
-import { start } from "$fresh/client.ts";
+import { start } from "@fresh/core/client";
 import manifest from "./fresh.gen.ts";
 
 await start(manifest);
