@@ -51,6 +51,17 @@ export type Dict = {
     techBadges: string[];
     devicesLabel: string;
     livePreview: string;
+    rec: string;
+    iso: string;
+    aperture: string;
+    shutter: string;
+    bankName: string;
+    shopLabel: string;
+    activityLabel: string;
+    network: string;
+    thisMonth: string;
+    transaction: string;
+    seniorEng: string;
     banking: { balance: string; card: string; send: string; pay: string; top: string };
     shop: { featured: string };
     activity: { steps: string; heart: string; cal: string };
@@ -87,8 +98,18 @@ export type Dict = {
       title: string;
       steps: { id: string; label: string; detail: string }[];
       output: string;
+      stepPrefix: string;
     };
     stack: string;
+    streaming: string;
+    live: string;
+    streamBlock: string;
+    streamInput: string;
+    streamPlan: string;
+    streamRetrieve: string;
+    streamExecute: string;
+    streamReflect: string;
+    streamRespond: string;
   };
   experience: {
     marker: string;
@@ -106,10 +127,21 @@ export type Dict = {
     titleB: string;
     cmd: string;
     filters: { all: string; web: string; mobile: string; ai: string };
+    catLabel: { web: string; mobile: string; ai: string };
     code: string;
     demo: string;
     visit: string;
     cases: string;
+    fieldNote: string;
+    expand: string;
+    collapse: string;
+    footerCount: string;
+    sortedBy: string;
+    lastUpdated: string;
+    moreInProd: string;
+    check: string;
+    on: string;
+    specimenLabel: string;
   };
   contact: {
     marker: string;
@@ -118,9 +150,12 @@ export type Dict = {
     cmd: string;
     online: string;
     based: string;
+    city: string;
     email: string;
     copy: string;
     copied: string;
+    jsonLabel: string;
+    locationLabel: string;
     form: { name: string; email: string; msg: string; send: string };
   };
   footer: {
@@ -167,6 +202,17 @@ const en: Dict = {
     techBadges: ["Kotlin", "Swift", "Jetpack", "SwiftUI", "Compose"],
     devicesLabel: "[3 devices]",
     livePreview: "● live preview",
+    rec: "REC ● 4K · MEMOJI",
+    iso: "ISO 100",
+    aperture: "f/1.8",
+    shutter: "1/60s",
+    bankName: "HERIBERTO V.",
+    shopLabel: "SHOP",
+    activityLabel: "ACTIVITY",
+    network: "●●●●● 5G",
+    thisMonth: "▲ +12.4% this month",
+    transaction: "Transaction",
+    seniorEng: "Senior Engineer",
     banking: {
       balance: "BALANCE",
       card: "•••• 4242",
@@ -251,9 +297,20 @@ const en: Dict = {
         { id: "s6", label: "respond", detail: "stream · cite · trace" },
       ],
       output: "✓ delivered in 1.4s · 3 tool calls · 0 retries",
+      stepPrefix: "step",
     },
     stack:
       "Python · TypeScript · LangGraph · OpenAI · Anthropic · pgvector · Ollama · MCP · n8n",
+    streaming: "streaming",
+    live: "live",
+    streamBlock: "[stream]",
+    streamInput:
+      '→ input: "Build a CSV exporter from the SQLite db"',
+    streamPlan: "→ plan: 4 steps · tools=[sql, fs, csv]",
+    streamRetrieve: "→ retrieve: schema for ",
+    streamExecute: "→ execute: SELECT * FROM users → /tmp/export.csv",
+    streamReflect: "→ reflect: schema validated · 1,247 rows · 312KB",
+    streamRespond: "→ respond: file written · ready for download",
   },
   experience: {
     marker: "02 // Career",
@@ -271,10 +328,21 @@ const en: Dict = {
     titleB: "deploys",
     cmd: "$ ls ./projects --format=card --sort=recency",
     filters: { all: "all", web: "web", mobile: "mobile", ai: "ai" },
+    catLabel: { web: "Web · APIs", mobile: "Mobile", ai: "AI · Agents" },
     code: "code",
     demo: "demo",
     visit: "visit",
     cases: "cases",
+    fieldNote: "field-research · est.2014",
+    expand: "expand",
+    collapse: "collapse",
+    footerCount: "specimens",
+    sortedBy: "sorted by recency",
+    lastUpdated: "last updated: today",
+    moreInProd: "more in production · check",
+    check: "check",
+    on: "on",
+    specimenLabel: "SPECIMEN",
   },
   contact: {
     marker: "06 // Contact",
@@ -283,9 +351,12 @@ const en: Dict = {
     cmd: "$ contact --new --channel=preferred",
     online: "online",
     based: "Based in",
+    city: "Mexico City",
     email: "hello@example.com",
     copy: "copy",
     copied: "copied ✓",
+    jsonLabel: "$ cat contact.json",
+    locationLabel: "location:",
     form: { name: "name", email: "email", msg: "message", send: "send_message" },
   },
   footer: {
@@ -332,6 +403,17 @@ const es: Dict = {
     techBadges: ["Kotlin", "Swift", "Jetpack", "SwiftUI", "Compose"],
     devicesLabel: "[3 dispositivos]",
     livePreview: "● vista en vivo",
+    rec: "REC ● 4K · MEMOJI",
+    iso: "ISO 100",
+    aperture: "f/1.8",
+    shutter: "1/60s",
+    bankName: "HERIBERTO V.",
+    shopLabel: "TIENDA",
+    activityLabel: "ACTIVIDAD",
+    network: "●●●●● 5G",
+    thisMonth: "▲ +12.4% este mes",
+    transaction: "Transacción",
+    seniorEng: "Ingeniero Senior",
     banking: {
       balance: "SALDO",
       card: "•••• 4242",
@@ -416,9 +498,20 @@ const es: Dict = {
         { id: "s6", label: "responder", detail: "stream · citar · trazar" },
       ],
       output: "✓ entregado en 1.4s · 3 llamadas a tools · 0 reintentos",
+      stepPrefix: "paso",
     },
     stack:
       "Python · TypeScript · LangGraph · OpenAI · Anthropic · pgvector · Ollama · MCP · n8n",
+    streaming: "transmitiendo",
+    live: "en vivo",
+    streamBlock: "[stream]",
+    streamInput:
+      '→ entrada: "Construye un exportador CSV desde la db SQLite"',
+    streamPlan: "→ plan: 4 pasos · tools=[sql, fs, csv]",
+    streamRetrieve: "→ recuperar: esquema para ",
+    streamExecute: "→ ejecutar: SELECT * FROM usuarios → /tmp/exportar.csv",
+    streamReflect: "→ reflexionar: esquema validado · 1,247 filas · 312KB",
+    streamRespond: "→ responder: archivo escrito · listo para descargar",
   },
   experience: {
     marker: "02 // Carrera",
@@ -436,10 +529,21 @@ const es: Dict = {
     titleB: "destacados",
     cmd: "$ ls ./proyectos --formato=tarjeta --sort=reciente",
     filters: { all: "todo", web: "web", mobile: "móvil", ai: "ia" },
+    catLabel: { web: "Web · APIs", mobile: "Móvil", ai: "IA · Agentes" },
     code: "código",
     demo: "demo",
     visit: "visitar",
     cases: "casos",
+    fieldNote: "trabajo-de-campo · est.2014",
+    expand: "expandir",
+    collapse: "contraer",
+    footerCount: "especímenes",
+    sortedBy: "ordenado por reciente",
+    lastUpdated: "actualizado: hoy",
+    moreInProd: "más en producción · revisa",
+    check: "revisa",
+    on: "en",
+    specimenLabel: "ESPECÍMEN",
   },
   contact: {
     marker: "06 // Contacto",
@@ -448,9 +552,12 @@ const es: Dict = {
     cmd: "$ contacto --nuevo --canal=preferido",
     online: "en línea",
     based: "Ubicado en",
+    city: "Ciudad de México",
     email: "hola@ejemplo.com",
     copy: "copiar",
     copied: "copiado ✓",
+    jsonLabel: "$ cat contacto.json",
+    locationLabel: "ubicación:",
     form: { name: "nombre", email: "correo", msg: "mensaje", send: "enviar_mensaje" },
   },
   footer: {

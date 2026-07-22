@@ -286,7 +286,7 @@ export default function Projects() {
               {d.projects.marker}
             </span>
             <span class="font-mono text-[10px] text-zinc-600">
-              field-research · est.2014
+              {d.projects.fieldNote}
             </span>
           </div>
           <h2 class="proj-title opacity-0 font-display text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
@@ -335,7 +335,7 @@ export default function Projects() {
                 >
                 </span>
                 <span class="text-xs uppercase tracking-widest">
-                  {c.label.toLowerCase()}
+                  {d.projects.catLabel[c.id]}
                 </span>
                 <span class="ml-2 text-[10px] text-zinc-600">
                   [{projects.filter((p) => p.category === c.id).length}]
@@ -382,9 +382,9 @@ export default function Projects() {
                       >
                         {String(idx + 1).padStart(2, "0")}
                       </span>
-                      <span class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">
-                        SPECIMEN · {project.category}
-                      </span>
+<span class="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">
+                      {d.projects.specimenLabel} · {d.projects.catLabel[project.category]}
+                    </span>
                     </div>
                     <span class="font-mono text-[10px] text-zinc-700">
                       #{project.id.slice(0, 4)}
@@ -492,7 +492,7 @@ export default function Projects() {
                         class="text-zinc-500 hover:text-zinc-200 transition-colors flex items-center gap-1"
                       >
                         <span>{isExpanded ? "▴" : "▾"}</span>
-                        <span>{isExpanded ? "collapse" : "expand"}</span>
+                        <span>{isExpanded ? d.projects.collapse : d.projects.expand}</span>
                       </button>
                       <span class="text-zinc-800">·</span>
                       {project.github && (
@@ -534,16 +534,16 @@ export default function Projects() {
           {/* Footer of folder */}
           <div class="mt-6 pt-4 border-t border-dashed border-zinc-900 flex items-center justify-between font-mono text-[10px] text-zinc-600">
             <span>
-              <span class="text-mint">●</span> {filtered.length} specimens ·
-              sorted by recency
+              <span class="text-mint">●</span> {filtered.length} {d.projects.footerCount} ·{" "}
+              {d.projects.sortedBy}
             </span>
-            <span>last updated: today</span>
+            <span>{d.projects.lastUpdated}</span>
           </div>
         </div>
 
         {/* "More coming" footer */}
         <div class="mt-12 text-center font-mono text-xs text-zinc-600">
-          <span class="text-amber">▸</span> more in production · check{" "}
+          <span class="text-amber">▸</span> {d.projects.moreInProd}{" "}
           <a
             href="https://github.com/Heri-valen"
             target="_blank"

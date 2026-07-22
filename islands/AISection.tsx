@@ -240,7 +240,7 @@ export default function AISection() {
             </div>
             <span class="font-mono text-[10px] text-emerald-500 flex items-center gap-1">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-              streaming
+              {d.ai.streaming}
             </span>
           </div>
 
@@ -251,7 +251,7 @@ export default function AISection() {
                 <>
                   <div class="flow-step opacity-0 flex flex-col items-center group">
                     <div class="w-16 h-16 md:w-20 md:h-20 rounded-lg border border-emerald-500/30 bg-emerald-500/5 flex flex-col items-center justify-center font-mono hover:border-emerald-400 hover:bg-emerald-500/10 transition-all">
-                      <div class="text-[9px] text-emerald-500/60">step {i + 1}</div>
+                      <div class="text-[9px] text-emerald-500/60">{d.ai.flow.stepPrefix} {i + 1}</div>
                       <div class="text-xs text-emerald-400 font-bold">{step.label}</div>
                     </div>
                     <div class="mt-2 text-[10px] text-zinc-500 font-mono text-center max-w-[100px]">
@@ -276,9 +276,9 @@ export default function AISection() {
 
             {/* Stream output */}
             <div class="mt-8 bg-black/50 border border-zinc-900 rounded p-4 font-mono text-xs">
-              <div class="text-zinc-600 mb-1">[stream]</div>
+              <div class="text-zinc-600 mb-1">{d.ai.streamBlock}</div>
               <div class="text-emerald-400 ai-stream">
-                {`→ input: "Build a CSV exporter from the SQLite db"\n→ plan: 4 steps · tools=[sql, fs, csv]\n→ retrieve: schema for `}{`users`}{`, `}{`orders`}{`\n→ execute: SELECT * FROM users → /tmp/export.csv\n→ reflect: schema validated · 1,247 rows · 312KB\n→ respond: file written · ready for download`}
+                {`${d.ai.streamInput}\n${d.ai.streamPlan}\n${d.ai.streamRetrieve}`}{`users`}{`, `}{`orders`}{`\n${d.ai.streamExecute}\n${d.ai.streamReflect}\n${d.ai.streamRespond}`}
               </div>
             </div>
 
@@ -287,7 +287,7 @@ export default function AISection() {
               <span>{d.ai.flow.output}</span>
               <span class="flex items-center gap-2">
                 <span class="status-dot"></span>
-                <span>live</span>
+                <span>{d.ai.live}</span>
               </span>
             </div>
           </div>

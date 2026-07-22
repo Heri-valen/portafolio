@@ -113,7 +113,7 @@ export default function MobileShowcase() {
                         HV
                       </div>
                       <p class="font-mono text-xs text-zinc-500 uppercase tracking-widest">
-                        Senior Engineer
+                        {d.showcase.seniorEng}
                       </p>
                     </div>
                   </div>
@@ -129,14 +129,14 @@ export default function MobileShowcase() {
 
                   {/* Status bar */}
                   <div class="absolute top-3 left-1/2 -translate-x-1/2 font-mono text-[10px] text-emerald-400 bg-black/70 px-2 py-0.5 rounded z-20">
-                    REC ● 4K · MEMOJI
+                    {d.showcase.rec}
                   </div>
 
                   {/* Bottom data strip */}
                   <div class="absolute bottom-3 left-3 right-3 flex justify-between font-mono text-[9px] text-zinc-400 z-20">
-                    <span class="bg-black/60 px-1.5 py-0.5 rounded">ISO 100</span>
-                    <span class="bg-black/60 px-1.5 py-0.5 rounded">f/1.8</span>
-                    <span class="bg-black/60 px-1.5 py-0.5 rounded">1/60s</span>
+                    <span class="bg-black/60 px-1.5 py-0.5 rounded">{d.showcase.iso}</span>
+                    <span class="bg-black/60 px-1.5 py-0.5 rounded">{d.showcase.aperture}</span>
+                    <span class="bg-black/60 px-1.5 py-0.5 rounded">{d.showcase.shutter}</span>
                   </div>
                 </div>
               </div>
@@ -237,7 +237,7 @@ export default function MobileShowcase() {
                   {/* Status bar */}
                   <div class="flex justify-between items-center px-6 pt-3 pb-2 text-[10px] font-mono">
                     <span class="text-emerald-400">9:41</span>
-                    <span class="text-zinc-500">●●●●● 5G</span>
+                    <span class="text-zinc-500">{d.showcase.network}</span>
                   </div>
                   {/* Banking App UI */}
                   <div class="px-5 pt-8 space-y-4">
@@ -248,7 +248,7 @@ export default function MobileShowcase() {
                       $12,847<span class="text-emerald-400">.50</span>
                     </div>
                     <div class="text-[10px] text-emerald-400 font-mono">
-                      ▲ +12.4% this month
+                      {d.showcase.thisMonth}
                     </div>
                     {/* Card */}
                     <div class="bg-gradient-to-br from-emerald-500/20 to-amber-500/10 border border-emerald-500/30 rounded-lg p-3 mt-4">
@@ -256,7 +256,7 @@ export default function MobileShowcase() {
                       {d.showcase.banking.card}
                     </div>
                       <div class="font-mono text-[10px] text-zinc-500 mt-1">
-                        HERIBERTO V.
+                        {d.showcase.bankName}
                       </div>
                     </div>
                     {/* Quick actions */}
@@ -277,7 +277,7 @@ export default function MobileShowcase() {
                           key={i}
                           class="flex justify-between font-mono text-[10px] py-1.5 border-b border-zinc-900"
                         >
-                          <span class="text-zinc-500">Transaction</span>
+                          <span class="text-zinc-500">{d.showcase.transaction}</span>
                           <span class={t.startsWith("+") ? "text-emerald-400" : "text-zinc-300"}>
                             {t}
                           </span>
@@ -294,7 +294,7 @@ export default function MobileShowcase() {
               <div class="w-[200px] h-[420px] bg-black rounded-[2.5rem] border-[2px] border-zinc-800 p-1.5 shadow-xl shadow-amber-500/10">
                 <div class="w-full h-full bg-[#0a0a0b] rounded-[2rem] overflow-hidden relative p-3 pt-8">
                   <div class="absolute top-1 left-1/2 -translate-x-1/2 w-16 h-4 bg-black rounded-full"></div>
-                  <div class="font-mono text-[9px] text-amber mb-2">SHOP</div>
+                  <div class="font-mono text-[9px] text-amber mb-2">{d.showcase.shopLabel}</div>
                   <div class="font-display text-base text-white mb-3">
                     {d.showcase.shop.featured}
                   </div>
@@ -326,7 +326,7 @@ export default function MobileShowcase() {
               <div class="w-[200px] h-[420px] bg-black rounded-[2.5rem] border-[2px] border-zinc-800 p-1.5 shadow-xl shadow-violet-500/10">
                 <div class="w-full h-full bg-[#0a0a0b] rounded-[2rem] overflow-hidden relative p-3 pt-8">
                   <div class="absolute top-1 left-1/2 -translate-x-1/2 w-16 h-4 bg-black rounded-full"></div>
-                  <div class="font-mono text-[9px] text-violet mb-2">ACTIVITY</div>
+                  <div class="font-mono text-[9px] text-violet mb-2">{d.showcase.activityLabel}</div>
                   <div class="font-display text-2xl text-white">
                     8,247
                   </div>
