@@ -39,6 +39,10 @@ hero: {
     initContact: string;
     initProfile: string;
     terminalPath: string;
+    enterToContinue: string;
+    enterHint: string;
+    endOfFile: string;
+    runAgain: string;
   };
   showcase: {
     marker: string;
@@ -191,6 +195,10 @@ const en: Dict = {
     initContact: "init_contact",
     initProfile: "open_profile",
     terminalPath: "~/portafolio/heriberto.valencia",
+    enterToContinue: "▸ press ENTER to continue...",
+    enterHint: "ENTER",
+    endOfFile: "─── EOF ───",
+    runAgain: "$ run again",
   },
   showcase: {
     marker: "03 // Mobile",
@@ -421,6 +429,10 @@ const es: Dict = {
     initContact: "iniciar_contacto",
     initProfile: "abrir_perfil",
     terminalPath: "~/portafolio/heriberto.valencia",
+    enterToContinue: "▸ presiona ENTER para continuar...",
+    enterHint: "ENTER",
+    endOfFile: "─── EOF ───",
+    runAgain: "$ ejecutar de nuevo",
   },
   showcase: {
     marker: "03 // Móvil",
