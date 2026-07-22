@@ -1,9 +1,11 @@
 import { useEffect, useRef } from "preact/hooks";
 import anime from "animejs";
 import { experiences } from "../content/experience.ts";
+import { t } from "../lib/i18n.ts";
 
 export default function Experience() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const d = t();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -29,20 +31,17 @@ export default function Experience() {
   return (
     <section id="experience" ref={sectionRef} class="relative py-24 bg-[#0d0d0e] grid-bg-dense">
       <div class="container mx-auto px-4">
-        {/* Section marker */}
         <div class="mb-12">
-          <div class="section-marker mb-4">02 // Career</div>
+          <div class="section-marker mb-4">{d.experience.marker}</div>
           <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-3">
-            git log <span class="gradient-text">--career</span>
+            {d.experience.titleA} <span class="gradient-text">{d.experience.titleB}</span>
           </h2>
           <p class="text-zinc-500 max-w-xl font-mono text-sm">
-            <span class="text-emerald-500">$</span> git log --reverse --author=heriberto --oneline
+            <span class="text-emerald-500">$</span> {d.experience.cmd}
           </p>
         </div>
 
-        {/* Editorial two-column layout */}
         <div class="relative max-w-5xl mx-auto">
-          {/* Central timeline rail */}
           <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-emerald-500/40 to-transparent"></div>
 
           <div class="space-y-12 md:space-y-16">
@@ -53,35 +52,29 @@ export default function Experience() {
                   key={exp.id}
                   class={`exp-item opacity-0 grid md:grid-cols-2 gap-8 items-start relative`}
                 >
-                  {/* Date column */}
                   <div class={`${isLeft ? "md:text-right md:pr-12" : "md:order-2 md:pl-12"}`}>
                     <div class="font-mono text-xs text-amber uppercase tracking-widest mb-2">
                       {exp.period.start}
                     </div>
                     <div class="font-mono text-xs text-zinc-600">
-                      → {exp.period.end ?? "present"}
+                      → {exp.period.end ?? d.experience.inProgress}
                     </div>
                     <div class="mt-2 font-mono text-xs text-zinc-700">
                       {exp.period.end
-                        ? `~${calculateYears(exp.period.start, exp.period.end)} yrs`
-                        : "in progress"}
+                        ? `~${calculateYears(exp.period.start, exp.period.end)} ${d.experience.yearsShort}`
+                        : d.experience.inProgress}
                     </div>
                   </div>
 
-                  {/* Center node */}
                   <div class="hidden md:block absolute left-1/2 top-2 -translate-x-1/2">
                     <div class="w-3 h-3 bg-emerald-500 rounded-full ring-4 ring-[#0d0d0e] shadow-[0_0_12px_rgba(74,222,128,0.6)]"></div>
                   </div>
 
-                  {/* Card column */}
                   <div class={`${isLeft ? "md:pl-12" : "md:order-1 md:pr-12 md:text-right"}`}>
                     <div class="card-hover bg-[#111113] border border-zinc-900 rounded-lg p-6 relative group">
-                      {/* Commit hash style */}
                       <div class={`flex items-center gap-2 mb-3 font-mono text-xs ${isLeft ? "" : "md:justify-end"}`}>
-                        <span class="text-zinc-600">commit</span>
-                        <span class="text-amber">
-                          {exp.id.slice(0, 7)}
-                        </span>
+                        <span class="text-zinc-600">{d.experience.commitLabel}</span>
+                        <span class="text-amber">{exp.id.slice(0, 7)}</span>
                       </div>
 
                       <h3 class="font-display text-xl font-semibold text-white mb-1">
@@ -89,9 +82,7 @@ export default function Experience() {
                       </h3>
                       <div class={`flex items-center gap-2 mb-4 ${isLeft ? "" : "md:justify-end"}`}>
                         <span class="text-emerald-400 font-mono text-sm">@</span>
-                        <span class="text-zinc-400 font-mono text-sm">
-                          {exp.company}
-                        </span>
+                        <span class="text-zinc-400 font-mono text-sm">{exp.company}</span>
                       </div>
 
                       <p class="text-zinc-500 text-sm leading-relaxed mb-4">
@@ -125,10 +116,9 @@ export default function Experience() {
           </div>
         </div>
 
-        {/* Bottom terminal prompt */}
         <div class="mt-16 max-w-5xl mx-auto font-mono text-sm">
           <span class="text-emerald-500">$</span>
-          <span class="text-zinc-500 ml-2">git log --oneline | wc -l</span>
+          <span class="text-zinc-500 ml-2">{d.experience.countLine}</span>
           <span class="text-amber ml-2">{experiences.length}</span>
         </div>
       </div>

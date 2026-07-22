@@ -3,6 +3,7 @@ import { define } from "../utils.ts";
 import Hero from "../islands/Hero.tsx";
 import MobileShowcase from "../islands/MobileShowcase.tsx";
 import Skills from "../islands/Skills.tsx";
+import AISection from "../islands/AISection.tsx";
 import Experience from "../islands/Experience.tsx";
 import Projects from "../islands/Projects.tsx";
 import Contact from "../islands/Contact.tsx";
@@ -14,13 +15,14 @@ export default define.page(function Home() {
         <title>Heriberto Valencia | Senior Full-Stack Developer</title>
         <meta
           name="description"
-          content="Senior Full-Stack Developer with 10+ years building scalable web applications. Expert in Python, JavaScript, TypeScript, VueJS, Angular, and cloud technologies."
+          content="Senior Full-Stack Developer with 10+ years building scalable web applications. Expert in Python, JavaScript, TypeScript, VueJS, Angular, Django, Laravel, WordPress, WooCommerce, and AI agents."
         />
       </Head>
 
       <Hero />
       <MobileShowcase />
       <Skills />
+      <AISection />
       <Experience />
       <Projects />
       <Contact />

@@ -1,21 +1,25 @@
 import { useSignal } from "@preact/signals";
+import { lang, t } from "../lib/i18n.ts";
+import LangSwitcher from "./LangSwitcher.tsx";
 
 export default function Header() {
   const isMenuOpen = useSignal(false);
+  const d = t();
 
   const navItems = [
-    { href: "#showcase", label: "/mobile" },
-    { href: "#skills", label: "/skills" },
-    { href: "#experience", label: "/experience" },
-    { href: "#projects", label: "/projects" },
-    { href: "#contact", label: "/contact" },
+    { href: "#showcase", label: d.nav.mobile },
+    { href: "#skills", label: d.nav.skills },
+    { href: "#ai", label: d.nav.ai },
+    { href: "#experience", label: d.nav.experience },
+    { href: "#projects", label: d.nav.projects },
+    { href: "#contact", label: d.nav.contact },
   ];
 
   return (
     <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[#0a0a0b]/80 border-b border-zinc-900">
       <nav class="container mx-auto px-4">
         <div class="flex items-center justify-between h-14">
-          {/* Logo / Prompt */}
+          {/* Logo */}
           <a href="#top" class="flex items-center gap-2 font-mono text-sm group">
             <span class="text-emerald-500">~</span>
             <span class="text-zinc-400 group-hover:text-white transition-colors">
@@ -40,11 +44,12 @@ export default function Header() {
             ))}
           </ul>
 
-          {/* Status indicators */}
-          <div class="hidden md:flex items-center gap-4 font-mono text-xs">
+          {/* Right cluster: lang + status + socials */}
+          <div class="hidden md:flex items-center gap-3 font-mono text-xs">
+            <LangSwitcher />
             <div class="flex items-center gap-2">
               <span class="status-dot"></span>
-              <span class="text-zinc-500">online</span>
+              <span class="text-zinc-500">{d.status}</span>
             </div>
             <div class="text-zinc-700">|</div>
             <a
@@ -66,12 +71,16 @@ export default function Header() {
           </div>
 
           {/* Mobile toggle */}
-          <button
-            class="md:hidden font-mono text-emerald-500 px-3"
-            onClick={() => isMenuOpen.value = !isMenuOpen.value}
-          >
-            {isMenuOpen.value ? "[x]" : "[≡]"}
-          </button>
+          <div class="md:hidden flex items-center gap-2">
+            <LangSwitcher />
+            <button
+              class="font-mono text-emerald-500 px-3"
+              onClick={() => isMenuOpen.value = !isMenuOpen.value}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen.value ? "[x]" : "[≡]"}
+            </button>
+          </div>
         </div>
 
         {/* Mobile menu */}

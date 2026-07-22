@@ -1,8 +1,10 @@
 import { useEffect, useRef } from "preact/hooks";
 import anime from "animejs";
+import { t } from "../lib/i18n.ts";
 
 export default function MobileShowcase() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const d = t();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -59,9 +61,9 @@ export default function MobileShowcase() {
   }, []);
 
   const stats = [
-    { label: "Mobile Apps Shipped", value: "12+", width: 85 },
-    { label: "Active Users", value: "50K", width: 70 },
-    { label: "Avg. Rating", value: "4.8★", width: 92 },
+    { label: "apps", value: "12+", width: 85 },
+    { label: "users", value: "50K", width: 70 },
+    { label: "rating", value: "4.8★", width: 92 },
   ];
 
   return (
@@ -77,12 +79,12 @@ export default function MobileShowcase() {
       <div class="container mx-auto px-4 relative z-10">
         {/* Section marker */}
         <div class="mb-12">
-          <div class="section-marker mb-4">03 // Mobile</div>
+          <div class="section-marker mb-4">{d.showcase.marker}</div>
           <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-3">
-            Mobile <span class="gradient-text">craft</span>
+            {d.showcase.titleA} <span class="gradient-text">{d.showcase.titleB}</span>
           </h2>
           <p class="text-zinc-500 max-w-xl font-mono text-sm">
-            <span class="text-emerald-500">$</span> show --platform ios,android --type production
+            <span class="text-emerald-500">$</span> {d.showcase.cmd}
           </p>
         </div>
 
@@ -141,50 +143,72 @@ export default function MobileShowcase() {
 
               {/* Floating tag */}
               <div class="absolute -bottom-3 -right-3 bg-amber text-black font-mono text-xs font-bold px-3 py-1.5 rounded shadow-lg rotate-3">
-                v.2026
+                {d.showcase.version}
               </div>
             </div>
 
             {/* Role info */}
             <div class="space-y-3">
               <div class="font-mono text-xs text-emerald-500 uppercase tracking-widest">
-                ~ /profile
+                {d.showcase.profileLabel}
               </div>
               <h3 class="font-display text-2xl font-bold text-white">
                 Heriberto Valencia
               </h3>
               <p class="font-mono text-sm text-amber">
-                Senior Mobile & Full-Stack Engineer
+                {d.showcase.role}
               </p>
               <p class="text-zinc-400 text-sm leading-relaxed">
-                Crafting native experiences for iOS & Android with{" "}
-                <span class="text-emerald-400 font-mono">Swift</span> and{" "}
-                <span class="text-emerald-400 font-mono">Kotlin</span>. 10+ years shipping apps that scale.
+                {d.showcase.bio}
               </p>
             </div>
 
             {/* Stats */}
             <div class="space-y-3 pt-4 border-t border-zinc-900">
-              {stats.map((stat) => (
-                <div key={stat.label}>
-                  <div class="flex justify-between mb-1.5 font-mono text-xs">
-                    <span class="text-zinc-500">{stat.label}</span>
-                    <span class="text-emerald-400 font-bold">{stat.value}</span>
-                  </div>
-                  <div class="h-1 bg-zinc-900 rounded-sm overflow-hidden">
-                    <div
-                      class="metric-bar h-full bg-gradient-to-r from-emerald-500 to-amber-500"
-                      data-width={stat.width}
-                      style="width: 0%"
-                    ></div>
-                  </div>
+              <div>
+                <div class="flex justify-between mb-1.5 font-mono text-xs">
+                  <span class="text-zinc-500">{d.showcase.stats.apps}</span>
+                  <span class="text-emerald-400 font-bold">{stats[0].value}</span>
                 </div>
-              ))}
+                <div class="h-1 bg-zinc-900 rounded-sm overflow-hidden">
+                  <div
+                    class="metric-bar h-full bg-gradient-to-r from-emerald-500 to-amber-500"
+                    data-width={stats[0].width}
+                    style="width: 0%"
+                  ></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1.5 font-mono text-xs">
+                  <span class="text-zinc-500">{d.showcase.stats.users}</span>
+                  <span class="text-emerald-400 font-bold">{stats[1].value}</span>
+                </div>
+                <div class="h-1 bg-zinc-900 rounded-sm overflow-hidden">
+                  <div
+                    class="metric-bar h-full bg-gradient-to-r from-emerald-500 to-amber-500"
+                    data-width={stats[1].width}
+                    style="width: 0%"
+                  ></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1.5 font-mono text-xs">
+                  <span class="text-zinc-500">{d.showcase.stats.rating}</span>
+                  <span class="text-emerald-400 font-bold">{stats[2].value}</span>
+                </div>
+                <div class="h-1 bg-zinc-900 rounded-sm overflow-hidden">
+                  <div
+                    class="metric-bar h-full bg-gradient-to-r from-emerald-500 to-amber-500"
+                    data-width={stats[2].width}
+                    style="width: 0%"
+                  ></div>
+                </div>
+              </div>
             </div>
 
             {/* Tech badges */}
             <div class="flex flex-wrap gap-2 pt-2">
-              {["Kotlin", "Swift", "Jetpack", "SwiftUI", "Compose"].map((t) => (
+              {d.showcase.techBadges.map((t) => (
                 <span
                   key={t}
                   class="font-mono text-xs px-2 py-1 border border-zinc-800 rounded text-zinc-400"
@@ -218,7 +242,7 @@ export default function MobileShowcase() {
                   {/* Banking App UI */}
                   <div class="px-5 pt-8 space-y-4">
                     <div class="font-mono text-[10px] text-zinc-500">
-                      BALANCE
+                      {d.showcase.banking.balance}
                     </div>
                     <div class="font-display text-3xl font-bold text-white">
                       $12,847<span class="text-emerald-400">.50</span>
@@ -228,16 +252,16 @@ export default function MobileShowcase() {
                     </div>
                     {/* Card */}
                     <div class="bg-gradient-to-br from-emerald-500/20 to-amber-500/10 border border-emerald-500/30 rounded-lg p-3 mt-4">
-                      <div class="font-mono text-[10px] text-zinc-400">
-                        •••• 4242
-                      </div>
+<div class="font-mono text-[10px] text-zinc-400">
+                      {d.showcase.banking.card}
+                    </div>
                       <div class="font-mono text-[10px] text-zinc-500 mt-1">
                         HERIBERTO V.
                       </div>
                     </div>
                     {/* Quick actions */}
                     <div class="grid grid-cols-3 gap-2 mt-3">
-                      {["Send", "Pay", "Top"].map((a) => (
+                      {[d.showcase.banking.send, d.showcase.banking.pay, d.showcase.banking.top].map((a) => (
                         <div
                           key={a}
                           class="bg-zinc-900 border border-zinc-800 rounded p-2 text-center font-mono text-[10px] text-emerald-400"
@@ -272,7 +296,7 @@ export default function MobileShowcase() {
                   <div class="absolute top-1 left-1/2 -translate-x-1/2 w-16 h-4 bg-black rounded-full"></div>
                   <div class="font-mono text-[9px] text-amber mb-2">SHOP</div>
                   <div class="font-display text-base text-white mb-3">
-                    Featured
+                    {d.showcase.shop.featured}
                   </div>
                   {/* Product cards */}
                   {[
@@ -307,7 +331,7 @@ export default function MobileShowcase() {
                     8,247
                   </div>
                   <div class="font-mono text-[9px] text-zinc-500">
-                    steps today
+                    {d.showcase.activity.steps}
                   </div>
                   {/* Chart placeholder */}
                   <div class="mt-3 h-20 bg-zinc-900 rounded relative overflow-hidden">
@@ -322,8 +346,8 @@ export default function MobileShowcase() {
                   </div>
                   <div class="grid grid-cols-2 gap-2 mt-3">
                     {[
-                      { l: "Heart", v: "72" },
-                      { l: "Cal", v: "1.2K" },
+                      { l: d.showcase.activity.heart, v: "72" },
+                      { l: d.showcase.activity.cal, v: "1.2K" },
                     ].map((s) => (
                       <div
                         key={s.l}
@@ -364,10 +388,10 @@ export default function MobileShowcase() {
 
             {/* Corner labels */}
             <div class="absolute top-4 right-4 font-mono text-[10px] text-zinc-600 uppercase tracking-widest">
-              [3 devices]
+              {d.showcase.devicesLabel}
             </div>
             <div class="absolute bottom-4 left-4 font-mono text-[10px] text-emerald-500/60">
-              ● live preview
+              {d.showcase.livePreview}
             </div>
           </div>
         </div>
