@@ -10,7 +10,7 @@
   "imports": {
     "$fresh/": "jsr:@fresh/core@2.3.3/",
     "preact": "npm:preact@10.25.4",
-    "@preact/signals": "npm:@preact/signals@1.14.4",
+    "@preact/signals": "npm:@preact/signals@2.9.4",
     "$std/": "jsr:@std@0.224.0/",
     "animejs": "npm:animejs@3.2.2"
   },
