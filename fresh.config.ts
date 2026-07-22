@@ -1,3 +1,3 @@
-import { defineConfig } from "@fresh/core/server";
+import { defineConfig } from "fresh";
 
 export default defineConfig({});

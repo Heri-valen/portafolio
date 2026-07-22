@@ -1,4 +1,4 @@
-import { Head } from "@fresh/core/runtime";
+import { Head } from "fresh";
 import Hero from "../islands/Hero.tsx";
 import Skills from "../islands/Skills.tsx";
 import Experience from "../islands/Experience.tsx";
