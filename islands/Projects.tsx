@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "preact/hooks";
 import anime from "animejs";
-import { projects, projectCategories, type ProjectCategory } from "../content/projects.ts";
+import { getProjects, projectCategories, type ProjectCategory } from "../content/projects.ts";
 import { t } from "../lib/i18n.ts";
 
 /* ─────────────────────────────────────────────────────────────
@@ -122,6 +122,7 @@ const PROJECT_STATS: Record<string, ProjectStat[]> = {
 export default function Projects() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const d = t();
+  const projects = getProjects();
   const [filter, setFilter] = useState<ProjectCategory | "all">("all");
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
@@ -503,7 +504,7 @@ export default function Projects() {
                           onClick={(e) => e.stopPropagation()}
                           class="text-zinc-500 hover:text-mint transition-colors"
                         >
-                          [code]
+                          [{d.projects.code}]
                         </a>
                       )}
                       {project.live && (
@@ -514,7 +515,7 @@ export default function Projects() {
                           onClick={(e) => e.stopPropagation()}
                           class="text-zinc-500 hover:text-amber transition-colors"
                         >
-                          [demo]
+                          [{d.projects.demo}]
                         </a>
                       )}
                     </div>

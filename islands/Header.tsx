@@ -26,7 +26,7 @@ export default function Header() {
               heriberto<span class="text-emerald-500">@dev</span>
             </span>
             <span class="hidden md:inline text-zinc-600">:</span>
-            <span class="hidden md:inline text-amber">~/portfolio</span>
+            <span class="hidden md:inline text-amber">~/portafolio</span>
             <span class="hidden md:inline text-emerald-500">$</span>
           </a>
 

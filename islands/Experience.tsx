@@ -1,11 +1,12 @@
 import { useEffect, useRef } from "preact/hooks";
 import anime from "animejs";
-import { experiences } from "../content/experience.ts";
+import { getExperiences } from "../content/experience.ts";
 import { t } from "../lib/i18n.ts";
 
 export default function Experience() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const d = t();
+  const experiences = getExperiences();
 
   useEffect(() => {
     const observer = new IntersectionObserver(

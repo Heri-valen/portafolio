@@ -1,9 +1,10 @@
 import Header from "../islands/Header.tsx";
 import Footer from "../islands/Footer.tsx";
+import { lang } from "../lib/i18n.ts";
 
 export default function App({ Component }: { Component: any }) {
   return (
-    <html lang="en">
+    <html lang={lang.value}>
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />

@@ -44,6 +44,15 @@ hero: {
     endOfFile: string;
     runAgain: string;
   };
+  modal: {
+    continueHint: string;
+    live: string;
+    last: string;
+  };
+  meta: {
+    title: string;
+    description: string;
+  };
   showcase: {
     marker: string;
     titleA: string;
@@ -128,6 +137,7 @@ hero: {
     yearsShort: string;
     commitLabel: string;
     countLine: string;
+    entries: { role: string; description: string; achievements: string[] }[];
   };
   projects: {
     marker: string;
@@ -151,6 +161,7 @@ hero: {
     on: string;
     specimenLabel: string;
     metrics: Record<string, string>;
+    entries: { title: string; description: string; longDescription: string }[];
   };
   contact: {
     marker: string;
@@ -199,6 +210,16 @@ const en: Dict = {
     enterHint: "ENTER",
     endOfFile: "─── EOF ───",
     runAgain: "$ run again",
+  },
+  modal: {
+    continueHint: "= continue",
+    live: "live",
+    last: "last",
+  },
+  meta: {
+    title: "Heriberto Valencia | Senior Full-Stack Developer",
+    description:
+      "Senior Full-Stack Developer with 10+ years building scalable web applications. Expert in Python, JavaScript, TypeScript, VueJS, Angular, Django, Laravel, WordPress, WooCommerce, and AI agents.",
   },
   showcase: {
     marker: "03 // Mobile",
@@ -339,6 +360,35 @@ const en: Dict = {
     yearsShort: "yrs",
     commitLabel: "commit",
     countLine: "git log --oneline | wc -l",
+    entries: [
+      {
+        role: "Senior Full-Stack Developer",
+        description: "Leading development of enterprise SaaS applications serving 100K+ users.",
+        achievements: [
+          "Architected microservices migration reducing latency by 40%",
+          "Led team of 5 developers in Agile environment",
+          "Implemented CI/CD pipelines reducing deploy time by 60%",
+        ],
+      },
+      {
+        role: "Full-Stack Developer",
+        description: "Built and scaled MVP from 0 to 50K users.",
+        achievements: [
+          "Developed real-time features handling 10K concurrent connections",
+          "Reduced page load time by 70% through optimization",
+          "Integrated 15+ third-party APIs",
+        ],
+      },
+      {
+        role: "Mid-Level Developer",
+        description: "Delivered 30+ client projects across various industries.",
+        achievements: [
+          "Built responsive web applications for Fortune 500 clients",
+          "Developed custom CMS solutions",
+          "Mentored junior developers",
+        ],
+      },
+    ],
   },
   projects: {
     marker: "05 // Work",
@@ -385,6 +435,56 @@ const en: Dict = {
       ocr_acc: "ocr_acc",
       queue: "queue",
     },
+    entries: [
+      {
+        title: "WooCommerce Headless Store",
+        description: "Headless e-commerce with custom storefront",
+        longDescription:
+          "WooCommerce + Next.js storefront with Stripe/PayPal gateways, custom REST endpoints, webhooks for inventory sync, and an admin dashboard for orders/analytics. ~3K SKUs, 99.9% uptime.",
+      },
+      {
+        title: "WordPress Multisite Network",
+        description: "Custom themes + proprietary plugins",
+        longDescription:
+          "Multisite network with 12 subsites. Built a custom block theme (FSE), 4 proprietary plugins (auth, booking, CRM, SEO). Headless WP feeding a Next.js frontend via WPGraphQL.",
+      },
+      {
+        title: "Laravel SaaS Platform",
+        description: "Multi-tenant SaaS with billing & queues",
+        longDescription:
+          "Laravel 11 + Inertia.js multi-tenant SaaS. Stripe subscriptions, Horizon queues, spatie/laravel-permission, custom REST + GraphQL APIs, websockets for live notifications.",
+      },
+      {
+        title: "Django REST API Platform",
+        description: "Scalable Python API with DRF",
+        longDescription:
+          "Django 5 + DRF + Celery. JWT auth, OpenAPI spec, Celery + Redis for async jobs, pgvector for similarity search. Powers a fleet of mobile apps and partner integrations.",
+      },
+      {
+        title: "Mobile Banking App",
+        description: "Native Android & iOS banking",
+        longDescription:
+          "Secure mobile banking with biometric auth, real-time notifications, instant transfers. Kotlin Coroutines + SwiftUI, end-to-end encryption, audit logs.",
+      },
+      {
+        title: "Fitness Tracking App",
+        description: "HealthKit & Google Fit integration",
+        longDescription:
+          "Cross-platform fitness app using HealthKit + Google Fit. Real-time sync, offline-first sync engine, custom ML for activity recognition.",
+      },
+      {
+        title: "AI Support Agent",
+        description: "Multi-channel agent with RAG + tools",
+        longDescription:
+          "Production agent serving 50K tickets/month. RAG over docs, function-calling for refunds/order lookups, escalation to humans, full Langfuse tracing.",
+      },
+      {
+        title: "Document AI Pipeline",
+        description: "OCR + LLM extraction at scale",
+        longDescription:
+          "Async document processing pipeline. OCR (Tesseract + LayoutLM), LLM extraction, structured outputs, confidence scoring, human review queue. 100K docs/month.",
+      },
+    ],
   },
   contact: {
     marker: "06 // Contact",
@@ -433,6 +533,16 @@ const es: Dict = {
     enterHint: "ENTER",
     endOfFile: "─── EOF ───",
     runAgain: "$ ejecutar de nuevo",
+  },
+  modal: {
+    continueHint: "= continuar",
+    live: "en vivo",
+    last: "último",
+  },
+  meta: {
+    title: "Heriberto Valencia | Desarrollador Full-Stack Senior",
+    description:
+      "Desarrollador Full-Stack Senior con más de 10 años construyendo aplicaciones web escalables. Experto en Python, JavaScript, TypeScript, VueJS, Angular, Django, Laravel, WordPress, WooCommerce y agentes de IA.",
   },
   showcase: {
     marker: "03 // Móvil",
@@ -573,6 +683,35 @@ const es: Dict = {
     yearsShort: "años",
     commitLabel: "commit",
     countLine: "git log --oneline | wc -l",
+    entries: [
+      {
+        role: "Desarrollador Full-Stack Senior",
+        description: "Liderando el desarrollo de aplicaciones SaaS empresariales que sirven a más de 100K usuarios.",
+        achievements: [
+          "Arquitecturé la migración a microservicios reduciendo la latencia en un 40%",
+          "Lideré un equipo de 5 desarrolladores en un entorno Ágil",
+          "Implementé pipelines CI/CD reduciendo el tiempo de despliegue en un 60%",
+        ],
+      },
+      {
+        role: "Desarrollador Full-Stack",
+        description: "Construí y escalé un MVP desde 0 hasta 50K usuarios.",
+        achievements: [
+          "Desarrollé funcionalidades en tiempo real manejando 10K conexiones concurrentes",
+          "Reduje el tiempo de carga de página en un 70% mediante optimización",
+          "Integré más de 15 APIs de terceros",
+        ],
+      },
+      {
+        role: "Desarrollador Mid-Level",
+        description: "Entregué más de 30 proyectos para clientes en diversas industrias.",
+        achievements: [
+          "Construí aplicaciones web responsivas para clientes Fortune 500",
+          "Desarrollé soluciones CMS a medida",
+          "Mentoricé a desarrolladores junior",
+        ],
+      },
+    ],
   },
   projects: {
     marker: "05 // Trabajo",
@@ -619,6 +758,56 @@ const es: Dict = {
       ocr_acc: "precisión",
       queue: "cola",
     },
+    entries: [
+      {
+        title: "Tienda Headless WooCommerce",
+        description: "E-commerce headless con storefront personalizado",
+        longDescription:
+          "Storefront WooCommerce + Next.js con pasarelas Stripe/PayPal, endpoints REST personalizados, webhooks para sincronización de inventario y panel de administración para pedidos/analítica. ~3K SKUs, 99.9% uptime.",
+      },
+      {
+        title: "Red WordPress Multisite",
+        description: "Themes personalizados + plugins propietarios",
+        longDescription:
+          "Red multisite con 12 subsitios. Construí un block theme (FSE) a medida, 4 plugins propietarios (auth, reservas, CRM, SEO). WP headless alimentando un frontend Next.js vía WPGraphQL.",
+      },
+      {
+        title: "Plataforma SaaS en Laravel",
+        description: "SaaS multi-inquilino con facturación y colas",
+        longDescription:
+          "SaaS multi-inquilino en Laravel 11 + Inertia.js. Suscripciones Stripe, colas Horizon, spatie/laravel-permission, APIs REST + GraphQL personalizadas, websockets para notificaciones en vivo.",
+      },
+      {
+        title: "Plataforma API REST en Django",
+        description: "API Python escalable con DRF",
+        longDescription:
+          "Django 5 + DRF + Celery. Auth JWT, spec OpenAPI, Celery + Redis para jobs asíncronos, pgvector para búsqueda por similitud. Potencia una flota de apps móviles e integraciones de partners.",
+      },
+      {
+        title: "App Bancaria Móvil",
+        description: "Banca nativa en Android e iOS",
+        longDescription:
+          "Banca móvil segura con auth biométrica, notificaciones en tiempo real, transferencias instantáneas. Kotlin Coroutines + SwiftUI, encriptación extremo a extremo, logs de auditoría.",
+      },
+      {
+        title: "App de Seguimiento Fitness",
+        description: "Integración con HealthKit y Google Fit",
+        longDescription:
+          "App fitness cross-platform usando HealthKit + Google Fit. Sync en tiempo real, motor de sync offline-first, ML a medida para reconocimiento de actividad.",
+      },
+      {
+        title: "Agente de Soporte IA",
+        description: "Agente multi-canal con RAG + tools",
+        longDescription:
+          "Agente en producción atendiendo 50K tickets/mes. RAG sobre docs, function-calling para reembolsos/consulta de pedidos, escalado a humanos, tracing completo en Langfuse.",
+      },
+      {
+        title: "Pipeline IA de Documentos",
+        description: "OCR + extracción LLM a escala",
+        longDescription:
+          "Pipeline asíncrono de procesamiento de documentos. OCR (Tesseract + LayoutLM), extracción con LLM, salidas estructuradas, scoring de confianza, cola de revisión humana. 100K docs/mes.",
+      },
+    ],
   },
   contact: {
     marker: "06 // Contacto",

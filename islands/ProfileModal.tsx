@@ -332,12 +332,12 @@ export default function ProfileModal({ open, onClose }: Props) {
               <kbd class="px-1.5 py-0.5 bg-zinc-900 border border-zinc-800 rounded text-[9px] text-zinc-400">
                 {i18n.hero.enterHint}
               </kbd>
-              <span>= continue</span>
+              <span>{i18n.modal.continueHint}</span>
             </span>
             <span class="text-zinc-700">·</span>
             <span class="flex items-center gap-1.5">
               <span class="status-dot"></span>
-              <span class="text-emerald-500">live</span>
+              <span class="text-emerald-500">{i18n.modal.live}</span>
             </span>
           </div>
         </div>
@@ -472,7 +472,7 @@ export default function ProfileModal({ open, onClose }: Props) {
                 {idx < p.sections.length - 1 ? (
                   <Prompt onClick={advance} label={i18n.hero.enterToContinue} kbd={i18n.hero.enterHint} />
                 ) : (
-                  <Prompt onClick={advance} label={i18n.hero.enterToContinue} kbd={i18n.hero.enterHint} last />
+                  <Prompt onClick={advance} label={i18n.hero.enterToContinue} kbd={i18n.hero.enterHint} lastLabel={i18n.modal.last} />
                 )}
               </article>
             );
@@ -535,7 +535,7 @@ export default function ProfileModal({ open, onClose }: Props) {
 /* ─────────────────────────────────────────────────────────────
    PROMPT — Press ENTER to continue
    ───────────────────────────────────────────────────────────── */
-function Prompt({ onClick, label, kbd, last }: { onClick: () => void; label: string; kbd: string; last?: boolean }) {
+function Prompt({ onClick, label, kbd, lastLabel }: { onClick: () => void; label: string; kbd: string; lastLabel?: string }) {
   return (
     <button
       type="button"
@@ -548,7 +548,7 @@ function Prompt({ onClick, label, kbd, last }: { onClick: () => void; label: str
         {kbd}
       </kbd>
       <span class="opacity-60">]</span>
-      {last && <span class="text-zinc-600 ml-2">· last</span>}
+      {lastLabel && <span class="text-zinc-600 ml-2">· {lastLabel}</span>}
     </button>
   );
 }
