@@ -4,6 +4,7 @@ import { t } from "../lib/i18n.ts";
 
 export default function MobileShowcase() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const phonesRef = useRef<HTMLDivElement>(null);
   const d = t();
 
   useEffect(() => {
@@ -60,6 +61,40 @@ export default function MobileShowcase() {
     if (sectionRef.current) observer.observe(sectionRef.current);
   }, []);
 
+  // Subtle parallax on phone cluster
+  useEffect(() => {
+    const cluster = phonesRef.current;
+    if (!cluster) return;
+    const onMove = (e: MouseEvent) => {
+      const rect = cluster.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = (e.clientX - cx) / rect.width;
+      const dy = (e.clientY - cy) / rect.height;
+      const phone1 = cluster.querySelector(".phone-1") as HTMLElement | null;
+      const phone2 = cluster.querySelector(".phone-2") as HTMLElement | null;
+      const phone3 = cluster.querySelector(".phone-3") as HTMLElement | null;
+      if (phone1) anime({ targets: phone1, translateX: dx * 10, translateY: dy * 6, duration: 600, easing: "easeOutQuad" });
+      if (phone2) anime({ targets: phone2, translateX: dx * 18, translateY: dy * 12, duration: 700, easing: "easeOutQuad" });
+      if (phone3) anime({ targets: phone3, translateX: dx * 18, translateY: dy * 12, duration: 700, easing: "easeOutQuad" });
+    };
+    const onLeave = () => {
+      const phone1 = cluster.querySelector(".phone-1") as HTMLElement | null;
+      const phone2 = cluster.querySelector(".phone-2") as HTMLElement | null;
+      const phone3 = cluster.querySelector(".phone-3") as HTMLElement | null;
+      [phone1, phone2, phone3].forEach((p, i) => {
+        if (!p) return;
+        anime({ targets: p, translateX: 0, translateY: 0, duration: 800, easing: "easeOutElastic(1, .7)", delay: i * 60 });
+      });
+    };
+    cluster.addEventListener("mousemove", onMove);
+    cluster.addEventListener("mouseleave", onLeave);
+    return () => {
+      cluster.removeEventListener("mousemove", onMove);
+      cluster.removeEventListener("mouseleave", onLeave);
+    };
+  }, []);
+
   const stats = [
     { label: "apps", value: "12+", width: 85 },
     { label: "users", value: "50K", width: 70 },
@@ -80,10 +115,10 @@ export default function MobileShowcase() {
         {/* Section marker */}
         <div class="mb-12">
           <div class="section-marker mb-4">{d.showcase.marker}</div>
-          <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-3">
-            {d.showcase.titleA} <span class="gradient-text">{d.showcase.titleB}</span>
+          <h2 class="section-title">
+            {d.showcase.titleA} <span class="accent">{d.showcase.titleB}</span>
           </h2>
-          <p class="text-zinc-500 max-w-xl font-mono text-sm">
+          <p class="section-cmd">
             <span class="text-emerald-500">$</span> {d.showcase.cmd}
           </p>
         </div>
@@ -220,7 +255,7 @@ export default function MobileShowcase() {
           </div>
 
           {/* RIGHT: Floating phones */}
-          <div class="relative h-[600px] md:h-[700px]">
+          <div ref={phonesRef} class="relative h-[600px] md:h-[700px]">
             {/* Decorative bg grid */}
             <div class="absolute inset-0 opacity-20">
               <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
@@ -229,7 +264,7 @@ export default function MobileShowcase() {
             </div>
 
             {/* Phone 1 — Banking App (large, center) */}
-            <div class="phone-frame absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 opacity-0">
+            <div class="phone-frame phone-1 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 opacity-0">
               <div class="w-[260px] md:w-[300px] h-[540px] md:h-[620px] bg-black rounded-[3rem] border-[3px] border-zinc-800 p-2 shadow-2xl shadow-emerald-500/20">
                 <div class="w-full h-full bg-gradient-to-br from-[#0a0a0b] via-[#111113] to-[#0a0a0b] rounded-[2.5rem] overflow-hidden relative">
                   {/* Notch */}
@@ -290,7 +325,7 @@ export default function MobileShowcase() {
             </div>
 
             {/* Phone 2 — E-Commerce (left, smaller, rotated) */}
-            <div class="phone-frame absolute top-[10%] left-[5%] z-20 opacity-0 -rotate-6 scale-90">
+            <div class="phone-frame phone-2 absolute top-[10%] left-[5%] z-20 opacity-0 -rotate-6 scale-90">
               <div class="w-[200px] h-[420px] bg-black rounded-[2.5rem] border-[2px] border-zinc-800 p-1.5 shadow-xl shadow-amber-500/10">
                 <div class="w-full h-full bg-[#0a0a0b] rounded-[2rem] overflow-hidden relative p-3 pt-8">
                   <div class="absolute top-1 left-1/2 -translate-x-1/2 w-16 h-4 bg-black rounded-full"></div>
@@ -322,7 +357,7 @@ export default function MobileShowcase() {
             </div>
 
             {/* Phone 3 — Fitness/Stats (right, smaller, rotated) */}
-            <div class="phone-frame absolute bottom-[10%] right-[5%] z-20 opacity-0 rotate-6 scale-90">
+            <div class="phone-frame phone-3 absolute bottom-[10%] right-[5%] z-20 opacity-0 rotate-6 scale-90">
               <div class="w-[200px] h-[420px] bg-black rounded-[2.5rem] border-[2px] border-zinc-800 p-1.5 shadow-xl shadow-violet-500/10">
                 <div class="w-full h-full bg-[#0a0a0b] rounded-[2rem] overflow-hidden relative p-3 pt-8">
                   <div class="absolute top-1 left-1/2 -translate-x-1/2 w-16 h-4 bg-black rounded-full"></div>

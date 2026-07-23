@@ -290,11 +290,11 @@ export default function Projects() {
               {d.projects.fieldNote}
             </span>
           </div>
-          <h2 class="proj-title opacity-0 font-display text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
+          <h2 class="proj-title opacity-0 section-title">
             {d.projects.titleA}{" "}
-            <span class="gradient-text italic">{d.projects.titleB}</span>
+            <span class="accent italic">{d.projects.titleB}</span>
           </h2>
-          <p class="text-zinc-500 max-w-xl font-mono text-sm pl-3 border-l-2 border-emerald-500/40">
+          <p class="section-cmd pl-3 border-l-2 border-emerald-500/40">
             <span class="text-emerald-500">$</span> {d.projects.cmd}
           </p>
         </div>
@@ -364,7 +364,7 @@ export default function Projects() {
                 <article
                   key={project.id}
                   data-id={project.id}
-                  class={`specimen opacity-0 group relative bg-[#0d0d0f] border border-zinc-900 rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ${
+                  class={`specimen opacity-0 group relative bg-[#0d0d0f] border border-zinc-900 rounded-lg overflow-hidden cursor-pointer transition-all duration-300 holo ${
                     isHovered ? "border-zinc-700" : ""
                   }`}
                   onMouseEnter={() => setHoveredId(project.id)}

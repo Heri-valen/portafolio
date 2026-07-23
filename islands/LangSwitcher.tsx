@@ -11,7 +11,7 @@ export default function LangSwitcher() {
             key={l}
             type="button"
             onClick={() => setLang(l)}
-            aria-pressed={active}
+            aria-pressed={active ? "true" : "false"}
             class={`px-2 py-1 uppercase tracking-widest transition-colors ${
               active
                 ? "bg-emerald-500 text-black font-bold"

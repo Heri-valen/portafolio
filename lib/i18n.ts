@@ -222,7 +222,7 @@ const en: Dict = {
       "Senior Full-Stack Developer with 10+ years building scalable web applications. Expert in Python, JavaScript, TypeScript, VueJS, Angular, Django, Laravel, WordPress, WooCommerce, and AI agents.",
   },
   showcase: {
-    marker: "03 // Mobile",
+    marker: "01 // Mobile",
     titleA: "Mobile",
     titleB: "craft",
     cmd: "$ show --platform ios,android --type production",
@@ -262,7 +262,7 @@ const en: Dict = {
     activity: { steps: "steps today", heart: "Heart", cal: "Cal" },
   },
   skills: {
-    marker: "01 // Stack",
+    marker: "02 // Stack",
     titleA: "Technical",
     titleB: "arsenal",
     cmd: "$ ls ./skills --sort=proficiency --format=table",
@@ -278,7 +278,7 @@ const en: Dict = {
     },
   },
   ai: {
-    marker: "04 // AI · Agents",
+    marker: "03 // AI · Agents",
     titleA: "Agentic",
     titleB: "engineering",
     cmd: "$ openai run --agent --stream --tools=all",
@@ -352,7 +352,7 @@ const en: Dict = {
     stackLabel: "stack",
   },
   experience: {
-    marker: "02 // Career",
+    marker: "04 // Career",
     titleA: "git log",
     titleB: "--career",
     cmd: "$ git log --reverse --author=heriberto --oneline",
@@ -585,7 +585,7 @@ const es: Dict = {
     activity: { steps: "pasos hoy", heart: "Pulso", cal: "Cal" },
   },
   skills: {
-    marker: "01 // Stack",
+    marker: "02 // Stack",
     titleA: "Arsenal",
     titleB: "técnico",
     cmd: "$ ls ./skills --sort=proficiencia --format=tabla",
@@ -601,7 +601,7 @@ const es: Dict = {
     },
   },
   ai: {
-    marker: "04 // IA · Agentes",
+    marker: "03 // IA · Agentes",
     titleA: "Ingeniería",
     titleB: "agéntica",
     cmd: "$ openai run --agente --stream --tools=todos",
@@ -675,7 +675,7 @@ const es: Dict = {
     stackLabel: "stack",
   },
   experience: {
-    marker: "02 // Carrera",
+    marker: "04 // Carrera",
     titleA: "git log",
     titleB: "--carrera",
     cmd: "$ git log --reverse --author=heriberto --oneline",

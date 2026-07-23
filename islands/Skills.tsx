@@ -19,7 +19,6 @@ export default function Skills() {
             easing: "easeOutCubic",
             delay: anime.stagger(40),
           });
-
           anime({
             targets: ".skill-bar-fill",
             width: (el: any) => el.dataset.level + "%",
@@ -27,40 +26,78 @@ export default function Skills() {
             easing: "easeOutExpo",
             delay: anime.stagger(40, { start: 200 }),
           });
-
+          document.querySelectorAll<HTMLElement>(".skill-counter").forEach((el) => {
+            const target = parseInt(el.dataset.target || "0", 10);
+            const obj = { v: 0 };
+            anime({
+              targets: obj,
+              v: target,
+              round: 1,
+              duration: 1200,
+              easing: "easeOutExpo",
+              delay: 400,
+              update: () => { el.textContent = `${obj.v}/5`; },
+            });
+          });
           observer.disconnect();
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.15 },
     );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+  }, []);
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+  // Subtle 3D tilt
+  useEffect(() => {
+    const rows = sectionRef.current?.querySelectorAll<HTMLElement>(".skill-row");
+    if (!rows) return;
+    const cleanups: Array<() => void> = [];
+    rows.forEach((row) => {
+      const onMove = (e: MouseEvent) => {
+        const rect = row.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        anime({
+          targets: row,
+          rotateX: -y * 4,
+          rotateY: x * 4,
+          duration: 200,
+          easing: "easeOutQuad",
+        });
+      };
+      const onLeave = () => {
+        anime({ targets: row, rotateX: 0, rotateY: 0, duration: 500, easing: "easeOutElastic(1, .7)" });
+      };
+      row.addEventListener("mousemove", onMove);
+      row.addEventListener("mouseleave", onLeave);
+      cleanups.push(() => {
+        row.removeEventListener("mousemove", onMove);
+        row.removeEventListener("mouseleave", onLeave);
+      });
+    });
+    return () => cleanups.forEach((fn) => fn());
   }, []);
 
   return (
-    <section id="skills" ref={sectionRef} class="relative py-24 bg-[#0a0a0b]">
+    <section id="skills" ref={sectionRef} class="relative py-24 bg-[#0a0a0b]" style="perspective: 1000px;">
       <div class="container mx-auto px-4">
         <div class="mb-12">
           <div class="section-marker mb-4">{d.skills.marker}</div>
-          <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-3">
-            {d.skills.titleA} <span class="gradient-text">{d.skills.titleB}</span>
+          <h2 class="section-title">
+            {d.skills.titleA} <span class="accent">{d.skills.titleB}</span>
           </h2>
-          <p class="text-zinc-500 max-w-xl font-mono text-sm">
+          <p class="section-cmd">
             <span class="text-emerald-500">$</span> {d.skills.cmd}
           </p>
         </div>
 
-        <div class="bg-[#111113] border border-zinc-900 rounded-lg overflow-hidden">
-          <div class="flex items-center justify-between px-4 py-3 border-b border-zinc-900 bg-[#0d0d0f]">
+        <div class="bento glass overflow-hidden">
+          <div class="flex items-center justify-between px-4 py-3 border-b border-zinc-900">
             <div class="flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-zinc-700"></span>
               <span class="w-2.5 h-2.5 rounded-full bg-zinc-700"></span>
               <span class="w-2.5 h-2.5 rounded-full bg-zinc-700"></span>
-              <span class="font-mono text-xs text-zinc-500 ml-3">
-                skills --all --years
-              </span>
+              <span class="font-mono text-xs text-zinc-500 ml-3">skills --all --years</span>
             </div>
             <span class="font-mono text-xs text-zinc-600">
               {skills.length} {d.skills.entries}
@@ -86,10 +123,11 @@ export default function Skills() {
                     .map((skill) => (
                       <div
                         key={skill.id}
-                        class="skill-row opacity-0 grid grid-cols-[1.5rem_1fr_3rem] items-center gap-3 group"
+                        class="skill-row opacity-0 grid grid-cols-[1.5rem_1fr_3rem] items-center gap-3 group p-2 -m-2 rounded transition-colors hover:bg-emerald-500/[0.03]"
+                        style="transform-style: preserve-3d;"
                       >
-                        <span class="font-mono text-emerald-500/70 group-hover:text-emerald-400">
-                          ▶
+                        <span class="font-mono text-emerald-500/70 group-hover:text-emerald-400 text-lg">
+                          {skill.icon}
                         </span>
                         <div class="min-w-0">
                           <div class="flex items-baseline justify-between mb-1.5">
@@ -98,15 +136,14 @@ export default function Skills() {
                             </span>
                           </div>
                           <div class="skill-bar-track">
-                            <div
-                              class="skill-bar-fill"
-                              data-level={skill.level * 20}
-                              style="width: 0%"
-                            ></div>
+                            <div class="skill-bar-fill" data-level={skill.level * 20} style="width: 0%"></div>
                           </div>
                         </div>
-                        <span class="font-mono text-xs text-zinc-500 text-right tabular-nums">
-                          {skill.level}/5
+                        <span
+                          class="font-mono text-xs text-zinc-500 text-right tabular-nums skill-counter"
+                          data-target={skill.level}
+                        >
+                          0/5
                         </span>
                       </div>
                     ))}
@@ -115,7 +152,7 @@ export default function Skills() {
             ))}
           </div>
 
-          <div class="flex items-center justify-between px-4 py-2 border-t border-zinc-900 bg-[#0d0d0f] font-mono text-xs">
+          <div class="flex items-center justify-between px-4 py-2 border-t border-zinc-900 font-mono text-xs">
             <span class="text-zinc-600">
               <span class="text-emerald-500">●</span> {d.skills.loaded}
             </span>

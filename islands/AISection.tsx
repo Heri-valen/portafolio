@@ -140,10 +140,10 @@ export default function AISection() {
         {/* Header */}
         <div class="mb-12">
           <div class="section-marker mb-4">{d.ai.marker}</div>
-          <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-3">
-            {d.ai.titleA} <span class="gradient-text">{d.ai.titleB}</span>
+          <h2 class="section-title">
+            {d.ai.titleA} <span class="accent">{d.ai.titleB}</span>
           </h2>
-          <p class="text-zinc-500 max-w-xl font-mono text-sm">
+          <p class="section-cmd">
             <span class="text-emerald-500">$</span> {d.ai.cmd}
           </p>
         </div>

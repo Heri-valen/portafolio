@@ -22,10 +22,10 @@ export default function Contact() {
       <div class="container mx-auto px-4 relative z-10">
         <div class="mb-12">
           <div class="section-marker mb-4">{d.contact.marker}</div>
-          <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-3">
-            {d.contact.titleA} <span class="gradient-text">{d.contact.titleB}</span>
+          <h2 class="section-title">
+            {d.contact.titleA} <span class="accent">{d.contact.titleB}</span>
           </h2>
-          <p class="text-zinc-500 max-w-xl font-mono text-sm">
+          <p class="section-cmd">
             <span class="text-emerald-500">$</span> {d.contact.cmd}
           </p>
         </div>

@@ -5,6 +5,7 @@ import { t } from "../lib/i18n.ts";
 
 export default function Experience() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const lineRef = useRef<HTMLDivElement>(null);
   const d = t();
   const experiences = getExperiences();
 
@@ -12,6 +13,15 @@ export default function Experience() {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
+          // Draw the center timeline line
+          if (lineRef.current) {
+            anime({
+              targets: lineRef.current,
+              scaleY: [0, 1],
+              duration: 1400,
+              easing: "easeOutExpo",
+            });
+          }
           anime({
             targets: ".exp-item",
             opacity: [0, 1],
@@ -25,25 +35,51 @@ export default function Experience() {
       },
       { threshold: 0.1 }
     );
-
     if (sectionRef.current) observer.observe(sectionRef.current);
+  }, []);
+
+  // Dot pulse on card hover
+  useEffect(() => {
+    const cards = sectionRef.current?.querySelectorAll<HTMLElement>(".exp-card");
+    const cleanups: Array<() => void> = [];
+    cards?.forEach((card) => {
+      const onEnter = () => {
+        const dot = card.parentElement?.querySelector(".exp-dot") as HTMLElement | null;
+        if (dot) anime({ targets: dot, scale: 1.5, duration: 400, easing: "easeOutCubic" });
+      };
+      const onLeave = () => {
+        const dot = card.parentElement?.querySelector(".exp-dot") as HTMLElement | null;
+        if (dot) anime({ targets: dot, scale: 1, duration: 400, easing: "easeOutCubic" });
+      };
+      card.addEventListener("mouseenter", onEnter);
+      card.addEventListener("mouseleave", onLeave);
+      cleanups.push(() => {
+        card.removeEventListener("mouseenter", onEnter);
+        card.removeEventListener("mouseleave", onLeave);
+      });
+    });
+    return () => cleanups.forEach((fn) => fn());
   }, []);
 
   return (
     <section id="experience" ref={sectionRef} class="relative py-24 bg-[#0d0d0e] grid-bg-dense">
       <div class="container mx-auto px-4">
-        <div class="mb-12">
+        <div class="mb-16">
           <div class="section-marker mb-4">{d.experience.marker}</div>
-          <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-3">
-            {d.experience.titleA} <span class="gradient-text">{d.experience.titleB}</span>
+          <h2 class="section-title">
+            {d.experience.titleA} <span class="accent">{d.experience.titleB}</span>
           </h2>
-          <p class="text-zinc-500 max-w-xl font-mono text-sm">
+          <p class="section-cmd">
             <span class="text-emerald-500">$</span> {d.experience.cmd}
           </p>
         </div>
 
         <div class="relative max-w-5xl mx-auto">
-          <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-emerald-500/40 to-transparent"></div>
+          <div
+            ref={lineRef}
+            class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px origin-top"
+            style="background: linear-gradient(to bottom, transparent 0%, var(--accent-mint) 8%, var(--accent-mint) 92%, transparent 100%); transform: scaleY(0);"
+          ></div>
 
           <div class="space-y-12 md:space-y-16">
             {experiences.map((exp, idx) => {
